@@ -39,6 +39,67 @@
 <a name="welcome-to-my-github-pages" class="anchor" href="#welcome-to-my-github-pages"><span class="octicon octicon-link"></span></a>Welcome to My GitHub Pages.</h3>
 
 <h1>
+<a name="convergence-of-data-pipelines" class="anchor" href="#convergence-of-data-pipelines"><span class="octicon octicon-link"></span></a>Convergence of data pipelines</h1>
+
+<p>Coming soon...</p>
+
+<h1>
+<a name="strange-cycles-in-technical-approach" class="anchor" href="#strange-cycles-in-technical-approach"><span class="octicon octicon-link"></span></a>Strange Cycles in technical approach</h1>
+
+<p>Something that has always bothered me in IT is that we seem to land up doing things that have already been done in previous generations, and then branding them as new and innovative. Much like the fashion world, something is cool until it isn’t, and then just as people have forgotten about it, it someone introduces it as the latest thing and it gets a second chance.</p>
+
+<p>I was just watching some very good talks around architecture on infoQ, the first one being about the event sourcing pattern, the second relating to data architecture and single system of record. In the case of event sourcing Martin Thompson of LMAX was talking about their overall architecture. He was extremely upfront in saying that this approach isn’t new at all, he had some interesting examples dating all the way back to the 196os, where on that hardware they were achieving over 2000 transactions per second. Most systems in this day and age, on massive hardware can’t achieve that. They have adopted these approaches and are able to process extremely complex transactions, millions per second on fairly low cost hardware. Largely due to the event sourcing approach.Somewhere between then and now we “forgot” about this, build massively complex databases, spent huge money and reduced performance.</p>
+
+<p>In the case of data, we went from a largely federated model where polarity was standard, to one where a single system of record became popular. Only to discover that it was brittle and created UN-intended couplings, so we are now discussing ways to go back to what we used to have.</p>
+
+<p>Our industry is littered with these sorts of examples. Just think of your experiences in IT, how many things that you are doing now did you actually do over 10 years ago in a slightly different way or my a different name?</p>
+
+<p>I often wonder how much of what we invest our time and money in isn’t a clear case of ignorance and a lack of critical thinking. Thick glasses, shoulder pads and permed hair anyone?</p>
+
+<hr><h1>
+<a name="inventing-the-mvp-from-first-principles" class="anchor" href="#inventing-the-mvp-from-first-principles"><span class="octicon octicon-link"></span></a>inventing the MVP from first principles</h1>
+
+<p>I was reading a block discussion about Vagrant today, and there is a comment there that I found complete classic from a guy by the name of Brandon Bloom:</p>
+
+<p>“Forgive me for derailing the conversation, but I’ve been following this thread about the Cathedral &amp; The Bazzar: <a href="http://news.ycombinator.com/item?id=4407188">http://news.ycombinator.com/item?id=4407188</a></p>
+
+<p>In particular, I’ve found the discussion of autoconf to be fascinating. I think what fundamentally bothers me about Vagrant is that it feels like autoconf. By that, I mean it’s a system which 1) hides a ton of hard work that users don’t need to do to target multiple backends 2) accomplishes that hiding through complexity 3) further hides that complexity through an “easy” interface 4) generally just f***ing works most of the time 5) is completely maddening to deal with when it does break 6) ideally shouldn’t need to exist.</p>
+
+<p>Anyway, I realize that ideals != reality. I also realize that I’ve got a learned behavior of reinventing the minimal viable tool from fundamentals to avoid dealing with the complexity of problems that I don’t have. And furthermore, I realize that my learned behavior is of limited applicability outside of narrow environments, such as my own startup where I own the full stack and make all the rules.”</p>
+
+<p>Of course I find it classic because I often go through the process of re-inventing the MVP myself.</p>
+
+<hr><h1>
+<a name="hacking-vs-quality-validated-learning" class="anchor" href="#hacking-vs-quality-validated-learning"><span class="octicon octicon-link"></span></a>Hacking Vs Quality Validated Learning</h1>
+
+<p>On occasion I teach a certification from the Software Engineer Institute called the Personal Software Process (PSP). The fundamental concepts that are put across is that as software developers we can apply good engineering practice to the way we develop software. This involves identifying measures that tell us something about the way we work, we can then use these measures to improve and ultimately become much better at what we do.</p>
+
+<p>The approach definitely works in the class setting. The class learns how to measure their time, quality, schedule and the size of their outputs. The class does this through writing some small applications and we collect the class data as we go, with some helpful tooling (process dashboard, <a href="http://www.processdash.com/">http://www.processdash.com/</a>). The code quality always improves, drastically. The estimation variance always comes down, and the class always leaves with an appreciation of the fact that we can apply engineering practice.</p>
+
+<p>The issue is always that these kinds of disciplines are extremely difficult to apply in a real world setting, partly because of ingrained habits, partly because of organizational and business drivers (I will post more on this soon), and partly because of poor change management.I will post a story of success and failure on this front where I tried to implement this approach at a large financial institution shortly too.</p>
+
+<p>The focus of this post comes from a common question/criticism I receive around the process, which talks to a more general concept and understanding of quality vs hacking which is driven by complexity and uncertainty.</p>
+
+<p>The common comment in the class setting is that when embarking on the estimation process prescribed we need to know with a great level of certainty how we are going to implement the given solution. This is fine in the class setting, but in the real world we are often faced with problems that contain too much complexity or uncertainty. This can stem from poor requirements (obviously) or poor domain understanding or even new technology. In these kinds of situations statistical estimation techniques fall apart because we don’t have any good proxies on which to base our estimates. The default here is to fall back into hacking or prototyping as a means of learning, and so all good practice, measurement and quality goes out the window.</p>
+
+<p>What I would like to put forward is that quality is still key in these kinds of situations for the following reasons:</p>
+
+<ul>
+<li>Prototypes often find their way into production</li>
+<li>The purpose of a prototype is help us learn something, in order to reduce risk and uncertainty, if we create a poor quality prototype we mostly miss the learning because the poor quality prevents it.</li>
+<li>If we don’t apply discipline to the prototype/learning process, then we don’t learn anything about our learning and we can never improve it, which is an issue given how much of our time is taken up by such activities.</li>
+</ul><p>In the lean manufacturing world they put forward the following premise: Any activity that does not result in validated learning is a waste, where validated learning is typically a learning from actual customer behavior. This implies that we setup experiments with the explicit goal of discovering which of our assumptions are correct and which aren’t. The more often we do this, the quicker we learn and improve and deliver and make more money. Now validate learning doesn’t only come from customers, it can come from internal customers (operational users, etc…) or whichever party is the ultimate consumer of the thing you are trying to build. The agile community tries to embrace this concept too, reduce the time to learning.</p>
+
+<p>What this means we have to apply the scientific method:</p>
+
+<ul>
+<li>Ask a question</li>
+<li>Formulate a hypothesis</li>
+<li>Test the hypothesis and capture the measurements and observations</li>
+<li>Analyze the results</li>
+</ul><p>We can easily do this within software, but it means a slight mind set change from “I am going to build X”, to “I am going to learn Y though X and exposing to Z”. E.g. I am going to build this UI and get the user to play with it ASAP.  The key point for me is that this still requires process discipline (follow the scientific method, and measure) and must include quality as s key consideration so that we get quality learning’s and/or products.</p>
+
+<hr><h1>
 <a name="transaction-processing-key-concepts-and-considerations" class="anchor" href="#transaction-processing-key-concepts-and-considerations"><span class="octicon octicon-link"></span></a>Transaction Processing: Key concepts and considerations</h1>
 
 <h3>
@@ -276,7 +337,7 @@
 
     <li><a href="http://doc.akka.io/docs/akka/2.0.3/general/actor-systems.html#actor-systems">http://doc.akka.io/docs/akka/2.0.3/general/actor-systems.html#actor-systems</a></li>
 
-</ul><h1>
+</ul><hr><h1>
 <a name="lean-batch-sizes-and-the-impact-on-skills" class="anchor" href="#lean-batch-sizes-and-the-impact-on-skills"><span class="octicon octicon-link"></span></a>Lean, Batch Sizes and the impact on Skills</h1>
 
 <p>I run a services team, we essentially build up technology and domain skills that we believe are valuable, and on sell them. I am fairly new to this particular business, from a traditionally delivery background of running an internal IT department (the other side of the supply chain as it were). Traditionally this particular business focussed on deep specialization in areas like SAP, SAS, tibco, etc... Particular technology stacks where the depth of skills was called for by the market, but also particular delivery models were in place which leant itself to waterfall type delivery models which are characterized by large batch sizes.</p>
