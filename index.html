@@ -1,40 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Quinton Anderson's Blog by quintona</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Quinton Anderson&#39;s Blog by quintona</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/quintona">View On GitHub</a></li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <header>
+      <div class="container">
+        <h1>Quinton Anderson&#39;s Blog</h1>
+        <h2>software engineering, mostly</h2>
 
-      <section>
-        <div id="title">
-          <h1>Quinton Anderson's Blog</h1>
-          <p>software engineering, mostly</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/quintona">quintona</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+        <section id="downloads">
+          <a href="https://github.com/quintona" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
+    <div class="container">
+      <section id="main_content">
         <h1>
 <a name="welcome-to-my-github-pages" class="anchor" href="#welcome-to-my-github-pages"><span class="octicon octicon-link"></span></a>Welcome to My GitHub Pages.</h1>
 
@@ -46,14 +37,40 @@ I am a software engineer, and depending on the day I either think I am getting g
 <ul>
 <li><a href="https://github.com/quintona">Github</a></li>
 <li><a href="https://bitbucket.org/qanderson">Bitbucket</a></li>
-</ul><p>For those interested in <a href="https://github.com/nathanmarz/storm">Storm</a>, I encourage you to <a href="http://www.packtpub.com/storm-realtime-processing-cookbook/book">purchase my book</a> on Storm.</p>
+</ul><p>You can also check out my <a href="au.linkedin.com/pub/quinton-anderson/37/422/11b">Linked-In Profile</a> or follow me <a href="https://twitter.com/qanderson7">on twitter</a>. I will be adding to my <a href="http://www.slideshare.net/quintona">slideshare</a> in the near <a href="http://quintonanderson.brandyourself.com/">future</a>. </p>
 
-<p>I am also hoping to start participating in my kaggle team in the near future, so to put some pressure on myself, I am referencing my <a href="https://www.kaggle.com/users/104993/quinton-anderson">Kaggle</a> profile. </p>
+<hr><h1>
+<a name="tutorial-scalding-repl-and-emacs" class="anchor" href="#tutorial-scalding-repl-and-emacs"><span class="octicon octicon-link"></span></a>Tutorial: Scalding REPL and Emacs</h1>
 
-<p>You can also check out my <a href="au.linkedin.com/pub/quinton-anderson/37/422/11b">Linked-In Profile</a> or follow me <a href="https://twitter.com/qanderson7">on twitter</a>. I will be adding to my <a href="http://www.slideshare.net/quintona">slideshare</a> in the near <a href="http://quintonanderson.brandyourself.com/">future</a>. </p>
+<p>In this tutorial I will show you how to use the Scalding REPL and emacs together to create a very productive environment for exploratory work with Scalding. The first question you will be, why? Well, explicitly in cases where your dev environment is too "far" from the cluster and you need to interact with the data in order to build out your pipeline. In these cases you cant use an IDE, you need to something deployed in your cluster, and preferably light weight, not requiring remote X sessions or anything brittle and crazy. In these cases a REPL is ideal, but a REPL on its own lacks alot of functionality... A REPL is great for basic exploring a language, but it isn't great for building up functionality in a way that is persistent. You need to have source files, and a REPL and you need to be able to move source between the 2 in an interactive way. In walks essh</p>
+
+<h2>
+<a name="emacs" class="anchor" href="#emacs"><span class="octicon octicon-link"></span></a>Emacs</h2>
+
+<p>Follow the instructions <a href="http://www.emacswiki.org/emacs/essh.el">here</a>, and install essh. </p>
+
+<p>I then also add the short cuts into the global context:</p>
+
+<p><code>(global-set-key (kbd "C-c C-v") 'pipe-line-to-shell)                                                                                                                                                                                                                                 
+(global-set-key (kbd "C-c C-j") 'pipe-region-to-shell)                                                                                                                                                                                                                               
+(global-set-key (kbd "C-z") 'undo)</code></p>
+
+<h2>
+<a name="scalding-repl" class="anchor" href="#scalding-repl"><span class="octicon octicon-link"></span></a>Scalding REPL</h2>
+
+<p>To use the Scalding REPL, follow the instructions that can be found <a href="https://github.com/twitter/scalding/blob/develop/scalding-repl/README.md">here</a></p>
+
+<h2>
+<a name="interactive-workflow" class="anchor" href="#interactive-workflow"><span class="octicon octicon-link"></span></a>Interactive workflow</h2>
+
+<p>The first part is to have a split window, one half with the source files, and the other half with a bash session. Start by splitting the window with <code>C-x 2</code>, and then select a window using <code>C-x o</code>. You can then open a bash session using <code>M-x shell</code>. In the bash session open up the Scalding REPL. You can then "push" code to the REPL and develop a great interactive workflow from a remote SSH session. </p>
+
+<p>When in the code window (code can be found using <code>C-x d</code>), simply execute the current line in the REPL using <code>C-c C-v</code>, or select a block using <code>C-space</code> and send it to the REPL using <code>C-c C-j</code>. It takes some slight getting used to, but you will quickly get to understand the power of this interactive coding mode. </p>
 
 <hr><h1>
 <a name="the-storm-cookbook" class="anchor" href="#the-storm-cookbook"><span class="octicon octicon-link"></span></a>The Storm Cookbook</h1>
+
+<p>For those interested in <a href="https://github.com/nathanmarz/storm">Storm</a>, I encourage you to <a href="http://www.packtpub.com/storm-realtime-processing-cookbook/book">purchase my book</a> on Storm.</p>
 
 <p>For those who have found their way here looking for the code bases from the Storm cookbook:</p>
 
@@ -73,15 +90,7 @@ I am a software engineer, and depending on the day I either think I am getting g
 <li><a href="https://bitbucket.org/qanderson/hello-world">https://bitbucket.org/qanderson/hello-world</a></li>
 <li><a href="https://bitbucket.org/qanderson/storm-puppet">https://bitbucket.org/qanderson/storm-puppet</a></li>
 <li><a href="https://bitbucket.org/qanderson/vagrant-storm-cluster">https://bitbucket.org/qanderson/vagrant-storm-cluster</a></li>
-</ul><h1>
-<a name="convergence-of-data-pipelines" class="anchor" href="#convergence-of-data-pipelines"><span class="octicon octicon-link"></span></a>Convergence of data pipelines</h1>
-
-<p>Coming soon...</p>
-
-<hr><h1>
-<a name="bitbucket-vs-github" class="anchor" href="#bitbucket-vs-github"><span class="octicon octicon-link"></span></a>Bitbucket Vs Github</h1>
-
-<hr><h1>
+</ul><hr><h1>
 <a name="strange-cycles-in-technical-approach" class="anchor" href="#strange-cycles-in-technical-approach"><span class="octicon octicon-link"></span></a>Strange Cycles in technical approach</h1>
 
 <p>Something that has always bothered me in IT is that we seem to land up doing things that have already been done in previous generations, and then branding them as new and innovative. Much like the fashion world, something is cool until it isn’t, and then just as people have forgotten about it, it someone introduces it as the latest thing and it gets a second chance.</p>
@@ -386,9 +395,8 @@ I am a software engineer, and depending on the day I either think I am getting g
 
 <p>The conclusion I have come to is that range of technologies is only a part it, and probably a smaller part. There has always been a wide range of technical solutions to any problem, what has changed is the way in which we deliver. Driven by valid business drivers, Agile and Lean have emerged as the dominant approaches to delivery, and I for one totally subscribe to the Lean principles. One of the underlying principles is that of reducing batch sizes, get a product from start to finish, end to end as quickly as possible. Global efficiency is more important than local efficiency. This reduces waste and actually ends up delivering faster by combining a whole lot of local inefficiency into a global efficiency, where are large batch sizes (depending on your situation of course), tend to combine a whole lot of local efficiency into a global inefficiency. The purpose of the post if not to convince you of this of provide anymore background, the purpose of the post is to say that I think there is a correlation and causality between the skills profile being called for and this approach. As agile and lean is applied more and more, the skills profile of the team members has to change in the same way as the machines on the factory floor have to change. I believe the future software developer won't ever be an "Oracle Developer", or an SAP developer or any of those others. They are certainly going to be around for a while still, but I think their place is the market will reduce.</p>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
     
   </body>
 </html>
